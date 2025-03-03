@@ -9,7 +9,7 @@ export const Todos: TodoItem[] = [
     {
         id: 2,
         label: "walk dog",
-        checked: false
+        checked: true
     },
     {
         id: 3,
