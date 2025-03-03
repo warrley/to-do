@@ -1,8 +1,16 @@
+import { Header } from "./components/Header";
+import { LeftArea } from "./components/left";
+import { RightArea } from "./components/Right";
+
 export const App = () => {
   return (
-    <h1 className="text-4xl text-red-500">
-      Hello world!
-    </h1>
+    <div className="bg-white w-full max-w-6xl mx-auto rounded-lg">
+      <Header />
+      <div className="flex h-[70vh] max-h-[700px]">
+        <LeftArea />
+        <RightArea />
+      </div>
+    </div>
   )
 }
 
