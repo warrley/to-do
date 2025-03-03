@@ -1,11 +1,7 @@
 import { Trash2 } from "lucide-react"
-import {  useState } from "react"
-import { Todos } from "../data/todos";
-import { TodoItem } from "../types/Todos";
+import { ItemProps } from "./Left";
 
-export const Item = () => {
-    const [todos, setTodos] = useState<TodoItem[]>(Todos);
-
+export const Item = ({ todos, setTodos }: ItemProps) => {
     const handleDelete = (id: number) => {
         const items = todos.filter(index => index.id !== id);
         setTodos(items);        
@@ -20,7 +16,7 @@ export const Item = () => {
     return (
         <div>
             {todos.map(item => (
-                <div onClick={() => handleChecked(item.id)} className={`flex justify-between border-b px-3 p-2 duration-300 cursor-pointer ${item.checked ? 'bg-green-100' : 'bg-slate-500/5 hover:green-10'}`}>
+                <div key={item.id} onClick={() => handleChecked(item.id)} className={`flex justify-between border-b px-3 p-2 duration-300 cursor-pointer ${item.checked ? 'bg-green-100' : 'bg-slate-500/5 hover:green-10'}`}>
                     <h1 className={`font-medium text-lg ${item.checked ? 'line-through text-green-300': 'text-slate-600'}`}>{item.label}</h1>
                     <span className="text-blue-500" onClick={(e) => { e.stopPropagation(); handleDelete(item.id) } }><Trash2 className="hover:stroke-red-700 transition-all duration-300"/></span>
                 </div>

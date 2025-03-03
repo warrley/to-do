@@ -1,9 +1,15 @@
+import { TodoItem } from "../types/Todos";
 import { Item } from "./Item"
 
-export const LeftArea = () => {
+type ItemProps = {
+    todos: TodoItem[];
+    handleAdd: (todoText: string) => void
+}
+
+export const LeftArea = ({ todos, handleAdd }: ItemProps) => {
     return (
         <div className="flex-[2]">
-            <Item />
+            <Item todos={todos} handleAdd={handleAdd} />
         </div>
     )
 }
