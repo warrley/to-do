@@ -9,7 +9,6 @@ export const FormAddTodo = ({ handleAdd }: { handleAdd: (text: string) => void }
         <form className="flex flex-col gap-2" onSubmit={e => {
             e.preventDefault();
             handleAdd(text);
-            console.log(text);
             setText('');
         }}>
             <label className="font-medium">Add a todo</label>
