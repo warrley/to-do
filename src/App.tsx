@@ -1,5 +1,5 @@
 import { Header } from "./components/Header";
-import { LeftArea } from "./components/left";
+import { LeftArea } from "./components/Left";
 import { RightArea } from "./components/Right";
 
 export const App = () => {
