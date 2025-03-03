@@ -4,7 +4,7 @@ export const Todos: TodoItem[] = [
     {
         id: 1,
         label: "buy groceries",
-        checked: false
+        checked: true
     },
     {
         id: 2,
