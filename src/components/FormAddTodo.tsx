@@ -8,8 +8,9 @@ export const FormAddTodo = ({ handleAdd }: { handleAdd: (text: string) => void }
     return (
         <form className="flex flex-col gap-2" onSubmit={e => {
             e.preventDefault();
-            handleAdd(text)
+            handleAdd(text);
             console.log(text);
+            setText('');
         }}>
             <label className="font-medium">Add a todo</label>
             <Input setText={setText} text={text}/>

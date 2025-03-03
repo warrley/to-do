@@ -19,12 +19,23 @@ export const App = () => {
     ])
   }
 
+  const handleDelete = (id: number) => {
+    const items = todos.filter(index => index.id !== id);
+    setTodos(items);
+  };
+
+  const handleChecked = (id: number) => {
+    setTodos(todos.map(todo => 
+      todo.id === id ? { ...todo, checked: !todo.checked } : todo
+    ));
+  };
+
   return (
     <div className="px-6">
         <div className="bg-white w-full max-w-6xl mx-auto rounded-lg ">
-          <Header />
+          <Header todos={todos}/>
           <div className="flex h-[70vh] max-h-[700px] flex-col lg:flex-row">
-            <LeftArea todos={todos} handleAdd={handleAdd} />
+            <LeftArea todos={todos} handleChecked={handleChecked} handleDelete={handleDelete}/>
             <RightArea handleAdd={handleAdd}/>
           </div>
       </div>

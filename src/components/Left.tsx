@@ -1,15 +1,16 @@
 import { TodoItem } from "../types/Todos";
 import { Item } from "./Item"
 
-type ItemProps = {
+export type ItemProps = {
     todos: TodoItem[];
-    handleAdd: (todoText: string) => void
+    handleChecked: (id: number) => void;
+    handleDelete: (id: number) => void;
 }
 
-export const LeftArea = ({ todos, handleAdd }: ItemProps) => {
+export const LeftArea = ({ todos, handleChecked, handleDelete }: ItemProps) => {
     return (
         <div className="flex-[2]">
-            <Item todos={todos} handleAdd={handleAdd} />
+            <Item todos={todos} handleChecked={handleChecked} handleDelete={handleDelete} />
         </div>
     )
 }

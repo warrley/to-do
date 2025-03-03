@@ -1,9 +1,7 @@
-import { Todos } from "../data/todos"
+import { TodoItem } from "../types/Todos";
 
-export const Header = () => {
-    const checked = Todos.filter(i => i.checked === true).length;
-
-    
+export const Header = ({ todos }: {todos: TodoItem[]}) => {
+    const checked = todos.filter(i => i.checked === true).length;
 
     return (
         <div className="flex justify-center">
@@ -14,7 +12,7 @@ export const Header = () => {
                     <span className="bg-green-500 rounded-full text-white size-5 lg:size-6"></span>
                 </div>
                 <div className="flex ">
-                    <p className="font-norma"><b>{checked}</b>/{Todos.length} todos completed</p>
+                    <p className="font-norma"><b>{checked}</b>/{todos.length} todos completed</p>
                 </div>
             </header>
             <p className="lg:text-9xl flex justify-center text-7xl absolute text-slate-700/50 font-bold text-center -mt-12 lg:-mt-16 max-w-6xl z-[-1]">TODO APP</p>

@@ -1,18 +1,7 @@
 import { Trash2 } from "lucide-react"
 import { ItemProps } from "./Left";
 
-export const Item = ({ todos, setTodos }: ItemProps) => {
-    const handleDelete = (id: number) => {
-        const items = todos.filter(index => index.id !== id);
-        setTodos(items);        
-    }
-
-    const handleChecked = (id: number) => {
-        setTodos(todos.map(todo => 
-            todo.id === id ? { ...todo, checked: !todo.checked } : todo
-        ));
-    };
-
+export const Item = ({ todos, handleChecked, handleDelete }: ItemProps) => {
     return (
         <div>
             {todos.map(item => (
