@@ -3,12 +3,12 @@ import { TodoItem } from "../types/Todos";
 
 type TodoType = {
   todos: TodoItem[];
-  setTodos: (todo: TodoItem[]) => void;
   handleAdd: (text: string) => void;
   handleDelete: (id: number) => void;
   handleChecked: (id: number) => void;
+  handleEdit: (id: number, text: string, setText: (t: string) => void) => void;
   showModal: boolean;
-  setShowModal: (f:boolean) => void;
+  setShowModal: (f: boolean) => void;
 }
 
 export const TodosContext = createContext({} as TodoType);
@@ -42,14 +42,28 @@ export const TodosProvider = ({ children }: { children: ReactNode }) => {
         setTodos(todos.map(todo => 
           todo.id === id ? { ...todo, checked: !todo.checked } : todo
         ));
-      };
+    };
+  
+  const handleEdit = (id: number, text: string, setText: (t: string) => void ) => {
+        if (!id || !text.trim()) return;
+
+        const updatedTodos = todos.map(todo =>
+            todo.id === id ? { ...todo, label: text } : todo
+        );
+
+        setTodos(updatedTodos);
+
+        setText('');
+
+        setShowModal(false);
+    };
   
     useEffect(() => {
       localStorage.setItem("todos", JSON.stringify(todos));
     },[todos])
   
     return (
-        <TodosContext.Provider value={{ todos, setTodos, handleAdd, handleDelete, handleChecked, showModal, setShowModal }}>
+        <TodosContext.Provider value={{ todos, handleAdd, handleDelete, handleChecked, handleEdit, showModal, setShowModal }}>
             {children}
         </TodosContext.Provider>
     )

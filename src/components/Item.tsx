@@ -6,7 +6,7 @@ import { Input } from "./Input";
 import { Button } from "./Button";
 
 export const Item = () => {
-    const { todos, setTodos, handleChecked, handleDelete, showModal, setShowModal, } = useContext(TodosContext);
+    const { todos, handleEdit, handleChecked, handleDelete, showModal, setShowModal, } = useContext(TodosContext);
     const [item, setItem] = useState<TodoItem | null>(null);
     const [text, setText] = useState("");
 
@@ -14,21 +14,6 @@ export const Item = () => {
         setItem(item);
         setShowModal(true);
     }
-
-    const handleEdit = (id: number | undefined) => {
-        if (!id || !text.trim() || text === item?.label) return;
-
-        const updatedTodos = todos.map(todo =>
-            todo.id === id ? { ...todo, label: text } : todo
-        );
-
-        setTodos(updatedTodos);
-
-        setText('');
-        setItem(null);
-
-        setShowModal(false);
-    };
 
     return (
         <div>
@@ -48,7 +33,7 @@ export const Item = () => {
                     <div className="flex flex-col items-center gap-3 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-600 text-white w-[40%] p-6 rounded-lg z-50">
                         <span onClick={() => setShowModal(false)} className="cursor-pointer hover:scale-125 text-xl font-bold text-red-600 absolute right-2 top-1 ">X</span>
                         <h1 className="text-xl font-bold">Edit Todo: {item?.label}</h1>
-                        <form className="flex flex-col w-full gap-2" onSubmit={(e) => { e.preventDefault();  handleEdit(item?.id)}}>
+                        <form className="flex flex-col w-full gap-2" onSubmit={(e) => { e.preventDefault(); if(item && item.id !== undefined){handleEdit(item.id, text, setText)} }}>
                             <label>What's new title?</label>
                             <Input setText={setText} text={text}/>
                             <Button label="Confirm"></Button>
