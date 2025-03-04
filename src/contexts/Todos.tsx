@@ -3,6 +3,7 @@ import { TodoItem } from "../types/Todos";
 
 type TodoType = {
   todos: TodoItem[];
+  setTodos: (todo: TodoItem[]) => void;
   handleAdd: (text: string) => void;
   handleDelete: (id: number) => void;
   handleChecked: (id: number) => void;
@@ -48,7 +49,7 @@ export const TodosProvider = ({ children }: { children: ReactNode }) => {
     },[todos])
   
     return (
-        <TodosContext.Provider value={{ todos, handleAdd, handleDelete, handleChecked, showModal, setShowModal }}>
+        <TodosContext.Provider value={{ todos, setTodos, handleAdd, handleDelete, handleChecked, showModal, setShowModal }}>
             {children}
         </TodosContext.Provider>
     )
