@@ -8,7 +8,7 @@ export const App = () => {
   const { todos } = useContext(TodosContext);
 
   return (
-    <div className="px-6">
+    <div className={`px-6 select-none`}>
         <div className="bg-white w-full max-w-6xl mx-auto rounded-lg ">
           <Header/>
           <div className="flex h-[70vh] max-h-[700px] flex-col lg:flex-row">

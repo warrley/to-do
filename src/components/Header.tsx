@@ -14,7 +14,7 @@ export const Header = () => {
                     <span className="bg-yellow-500 rounded-full text-white size-4 lg:size-6"></span>
                     <span className="bg-green-500 rounded-full text-white size-4 lg:size-6"></span>
                 </div>
-                <div className="flex ">
+                <div className="flex">
                     <p><b>{checked}</b>/{todos.length} todos completed</p>
                 </div>
             </header>

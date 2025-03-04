@@ -6,6 +6,8 @@ type TodoType = {
   handleAdd: (text: string) => void;
   handleDelete: (id: number) => void;
   handleChecked: (id: number) => void;
+  showModal: boolean;
+  setShowModal: (f:boolean) => void;
 }
 
 export const TodosContext = createContext({} as TodoType);
@@ -16,7 +18,8 @@ const getInitialTodo = () => {
 }
 
 export const TodosProvider = ({ children }: { children: ReactNode }) => {
-    const [todos, setTodos] = useState<TodoItem[]>(getInitialTodo);
+  const [todos, setTodos] = useState<TodoItem[]>(getInitialTodo);
+  const [showModal, setShowModal] = useState(false);
 
     const handleAdd = (textTodo: string) => {
         setTodos([
@@ -45,7 +48,7 @@ export const TodosProvider = ({ children }: { children: ReactNode }) => {
     },[todos])
   
     return (
-        <TodosContext.Provider value={{ todos, handleAdd, handleDelete, handleChecked }}>
+        <TodosContext.Provider value={{ todos, handleAdd, handleDelete, handleChecked, showModal, setShowModal }}>
             {children}
         </TodosContext.Provider>
     )
