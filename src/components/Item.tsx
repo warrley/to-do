@@ -30,8 +30,8 @@ export const Item = () => {
                 <>
                     <div className="fixed inset-0 bg-black/50 z-40" onClick={() => setShowModal(false)}></div>
 
-                    <div className="flex flex-col items-center gap-3 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-600 text-white w-[40%] p-6 rounded-lg z-50">
-                        <span onClick={() => setShowModal(false)} className="cursor-pointer hover:scale-125 text-xl font-bold text-red-600 absolute right-2 top-1 ">X</span>
+                    <div className="flex flex-col items-center gap-3 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-600 text-white w-[80%] lg:w-[40%] p-6 rounded-lg z-50">
+                        <span onClick={() => setShowModal(false)} className="cursor-pointer hover:scale-125 text-xl font-bold text-red-600 absolute right-2 top-1 duration-300">X</span>
                         <h1 className="text-xl font-bold">Edit Todo: {item?.label}</h1>
                         <form className="flex flex-col w-full gap-2" onSubmit={(e) => { e.preventDefault(); if(item && item.id !== undefined){handleEdit(item.id, text, setText)} }}>
                             <label>What's new title?</label>
