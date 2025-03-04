@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 import { TodoItem } from "../types/Todos";
 
 type TodoType = {
@@ -10,8 +10,13 @@ type TodoType = {
 
 export const TodosContext = createContext({} as TodoType);
 
+const getInitialTodo = () => {
+  const savedTodo = localStorage.getItem("todos");
+  return savedTodo ? JSON.parse(savedTodo) : [];
+}
+
 export const TodosProvider = ({ children }: { children: ReactNode }) => {
-    const [todos, setTodos] = useState<TodoItem[]>([]);
+    const [todos, setTodos] = useState<TodoItem[]>(getInitialTodo);
 
     const handleAdd = (textTodo: string) => {
         setTodos([
@@ -34,7 +39,11 @@ export const TodosProvider = ({ children }: { children: ReactNode }) => {
           todo.id === id ? { ...todo, checked: !todo.checked } : todo
         ));
       };
-
+  
+    useEffect(() => {
+      localStorage.setItem("todos", JSON.stringify(todos));
+    },[todos])
+  
     return (
         <TodosContext.Provider value={{ todos, handleAdd, handleDelete, handleChecked }}>
             {children}
