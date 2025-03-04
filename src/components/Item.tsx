@@ -18,7 +18,7 @@ export const Item = () => {
     return (
         <div>
             {todos.map(item => (
-                <div key={item.id} onClick={() => handleChecked(item.id)} className={`flex justify-between border-b px-3 p-2 duration-300 cursor-pointer select-none ${item.checked ? 'bg-green-100' : 'bg-slate-500/5 hover:bg-green-100'}`}>
+                <div key={item.id} onClick={() => handleChecked(item.id, !item.checked)} className={`flex justify-between border-b px-3 p-2 duration-300 cursor-pointer select-none ${item.checked ? 'bg-green-100' : 'bg-slate-500/5 hover:bg-green-100'}`}>
                     <h1 className={`font-medium text-lg ${item.checked ? 'line-through text-green-300' : 'text-slate-600'}`}>{item.label}</h1>
                     <div className="flex gap-5 items-center">
                         <span className="text-blue-500" onClick={(e) => { e.stopPropagation(); openModal(item) }}><Edit className="hover:stroke-yellow-400 transition-all duration-300" size={24}/></span>
