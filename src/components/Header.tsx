@@ -1,6 +1,9 @@
-import { TodoItem } from "../types/Todos";
+import { useContext } from "react";
+import { TodosContext } from "../contexts/Todos";
 
-export const Header = ({ todos }: {todos: TodoItem[]}) => {
+export const Header = () => {
+    const { todos } = useContext(TodosContext);
+
     const checked = todos.filter(i => i.checked === true).length;
 
     return (

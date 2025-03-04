@@ -7,10 +7,10 @@ export type ItemProps = {
     handleDelete: (id: number) => void;
 }
 
-export const LeftArea = ({ todos, handleChecked, handleDelete }: ItemProps) => {
+export const LeftArea = () => {
     return (
         <div className="flex-[2]">
-            <Item todos={todos} handleChecked={handleChecked} handleDelete={handleDelete} />
+            <Item />
         </div>
     )
 }

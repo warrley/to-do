@@ -1,7 +1,10 @@
 import { Trash2 } from "lucide-react"
-import { ItemProps } from "./Left";
+import { useContext } from "react";
+import { TodosContext } from "../contexts/Todos";
 
-export const Item = ({ todos, handleChecked, handleDelete }: ItemProps) => {
+export const Item = () => {
+    const { todos, handleChecked, handleDelete } = useContext(TodosContext);
+
     return (
         <div>
             {todos.map(item => (

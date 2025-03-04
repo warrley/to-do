@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Button } from "./Button"
 import { Input } from "./Input";
+import { TodosContext } from "../contexts/Todos";
 
-export const FormAddTodo = ({ handleAdd }: { handleAdd: (text: string) => void }) => {
+export const FormAddTodo = () => {
+    const { handleAdd } = useContext(TodosContext);
     const [text, setText] = useState("");
 
     return (
