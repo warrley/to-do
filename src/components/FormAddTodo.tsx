@@ -12,6 +12,7 @@ export const FormAddTodo = () => {
             e.preventDefault();
             handleAdd(text);
             setText('');
+            console.log(text)
         }}>
             <label className="font-medium">Add a todo</label>
             <Input setText={setText} text={text}/>

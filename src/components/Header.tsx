@@ -18,7 +18,7 @@ export const Header = () => {
                     <p><b>{checked}</b>/{todos.length} todos completed</p>
                 </div>
             </header>
-            <p className="lg:text-9xl flex justify-center text-7xl absolute text-slate-700/50 font-bold text-center -mt-12 lg:-mt-16 max-w-6xl z-[-1]">TODO APP</p>
+            <p className="lg:text-9xl flex justify-center text-6xl absolute text-slate-700/50 font-bold text-center -mt-10 lg:-mt-16 max-w-6xl z-[-1]">TODO APP</p>
         </div>
     )
 }
