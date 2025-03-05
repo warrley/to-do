@@ -1,6 +1,6 @@
 # Todo List
 
-Esta é uma aplicação para gravar atividades, com possibiliadade de login com email e senha e google.
+Esta é uma aplicação para gravar atividades, com possibiliadade de login com email e senha / google.
 Ações possíveis = Adicionar, Editar, Completar e Deletar.
 
 <a href="https://vercel.com/warleys-projects-93994554/to-do">Clique para acessar o site</a> 
