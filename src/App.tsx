@@ -41,8 +41,8 @@ export const App = () => {
         <>
           <div className="fixed inset-0 bg-black/60 z-40"></div>
           <div className={`${fade ? "opacity-0" : "opacity-100"} transition-opacity duration-500 h-96 flex flex-col items-center gap-4 text-white justify-center w-[80vw] lg:w-[40vw] bg-slate-600 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl z-50`}>
-            <h1 className="text-5xl font-semibold">Olá</h1>
-            <p className="text-4xl font-medium text-center">Primeiro faça o login</p>
+            <h1 className="text-5xl font-semibold">Hello</h1>
+            <p className="text-5xl font-medium text-center">first, sign up</p>
           </div>
         </>
       }
