@@ -3,7 +3,7 @@
 Esta é uma aplicação para gravar atividades, com possibiliadade de login com email e senha / google.
 Ações possíveis = Adicionar, Editar, Completar e Deletar.
 
-<a href="https://vercel.com/warleys-projects-93994554/to-do">Clique para acessar o site</a> 
+<a href="https://to-do-one-bay.vercel.app/">Clique para acessar o site</a> 
 
 Instruções para rodar o projeto na sua máquina ->  
 1.Abra o cmd, vá até uma pasta que queria colocar o projeto.  
