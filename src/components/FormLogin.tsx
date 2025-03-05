@@ -58,12 +58,12 @@ export const FormLogin = () => {
             <p className="text-3xl font-bold">Signin</p>
             
             <form className="flex flex-col w-full gap-4" onSubmit={handleCheck}>
-              <div className="w-full flex gap-4">
-                <div className="flex-1 flex flex-col">
+              <div className="flex flex-col w-full">
+                <div className="flex flex-col">
                   <label>Enter an email</label>
                   <Input text={email} type="email" setText={setEmail} />
                 </div>
-                <div className="flex-1 flex flex-col">
+                <div className="flex flex-col">
                   <label>Enter a password</label>
                   <Input text={password} type="password" setText={setPassword} />
                 </div>

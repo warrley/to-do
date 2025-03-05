@@ -1,4 +1,4 @@
-import { useContext, useEffect, useLayoutEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Header } from "./components/Header";
 import { LeftArea } from "./components/Left";
 import { RightArea } from "./components/Right";
