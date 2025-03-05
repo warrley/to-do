@@ -24,8 +24,29 @@ export const deleteTodo = async (todoId: string) => {
 
 // ✅ Atualizar um "to-do" (edição ou marcar como concluído)
 export const updateTodo = async (todoId: string, data: Partial<{ label: string; checked: boolean }>) => {
-  await updateDoc(doc(db, "todos", todoId), {
-    text: data.label, // Converte "label" para "text"
-    completed: data.checked, // Converte "checked" para "completed"
-  });
+  const updatedData: Partial<{ text: string; completed: boolean }> = {}; // Usamos 'text' para Firestore e 'completed' para o estado
+
+  // Se 'checked' foi enviado, atualiza o campo 'completed'
+  if (data.checked !== undefined) {
+    updatedData.completed = data.checked;
+  }
+
+  // Se 'label' (que corresponde ao texto) foi enviado, atualiza o campo 'text'
+  if (data.label !== undefined) {
+    updatedData.text = data.label;
+  }
+
+  // Se o campo 'updatedData' estiver vazio (sem alterações), não tenta fazer a atualização
+  if (Object.keys(updatedData).length === 0) {
+    console.log("Nenhuma alteração para atualizar");
+    return;
+  }
+
+  try {
+    // Atualiza somente os campos que realmente precisam ser modificados
+    await updateDoc(doc(db, "todos", todoId), updatedData);
+    console.log(`To-do ${todoId} atualizado com sucesso`);
+  } catch (error) {
+    console.error("Erro ao atualizar o todo no Firestore:", error);
+  }
 };

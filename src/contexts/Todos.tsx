@@ -47,11 +47,17 @@ export const TodosProvider = ({ children }: { children: ReactNode }) => {
 
   // ✅ Marcar ou desmarcar um "to-do" como concluído (Firestore)
   const handleChecked = async (id: string, checked: boolean) => {
-    await updateTodo(id, { checked }); // Atualiza no Firestore
+  console.log("Atualizando Firestore:", id, { checked }); // Adicionando o log para depuração
+  try {
+    // Envia apenas o campo 'checked' para o Firestore
+    await updateTodo(id, { checked });
     setTodos(todos.map(todo => 
       todo.id === id ? { ...todo, checked } : todo
     ));
-  };
+  } catch (error) {
+    console.error("Erro ao atualizar o todo:", error);
+  }
+};
 
   // ✏ Editar um "to-do" no Firestore
   const handleEdit = async (id: string, text: string, setText: (t: string) => void) => {
